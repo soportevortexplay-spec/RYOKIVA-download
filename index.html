@@ -3,51 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RYOKIVA - Dashboard</title>
+<title>RYOKIVA - Streaming TV</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:25px}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
-.logo{font-size:1.8rem;font-weight:900;color:#e11d48;letter-spacing:1px}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:25px;position:relative;overflow-x:hidden}
+
+.bg-logo-watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;max-width:500px;opacity:0.06;pointer-events:none;z-index:0}
+
+#splash-screen{position:fixed;inset:0;background:#0b1120;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.8s ease}
+.splash-logo{width:140px;height:auto;margin-bottom:20px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;z-index:1}
+.brand-logo-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand-logo-small img{height:40px;width:auto}
+.brand-title{font-size:1.5rem;font-weight:900;color:#e11d48;letter-spacing:1px}
+
+.header-right{display:flex;align-items:center;gap:15px}
+.expiration-badge{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.15);padding:8px 14px;border-radius:12px;font-size:0.85rem;font-weight:600;color:#fbbf24;display:flex;align-items:center;gap:6px}
+
 .profile-btn{display:flex;align-items:center;gap:10px;background:rgba(30,41,59,0.8);padding:8px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);text-decoration:none;color:#fff;transition:all .2s}
 .profile-btn:focus,.profile-btn:hover{border-color:#e11d48;background:rgba(225,29,72,0.25)}
-.main-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1200px;margin:0 auto;width:100%}
-.nav-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:15px;text-decoration:none;color:#fff;outline:none;transition:all .25s ease}
-.nav-card:focus,.nav-card:hover{border-color:#e11d48;transform:scale(1.05);background:rgba(225,29,72,0.2);box-shadow:0 10px 30px rgba(225,29,72,0.3)}
-.card-icon{font-size:3rem}
-.card-title{font-size:1.3rem;font-weight:800}
-.card-desc{font-size:0.85rem;color:#94a3b8}
+
+/* Contenedor Principal con Scroll */
+.dashboard-container{max-width:1200px;margin:0 auto;width:100%;z-index:1;display:flex;flex-direction:column;gap:25px;padding-bottom:30px}
+
+/* Secciones de Navegación */
+.main-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.nav-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:25px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;text-decoration:none;color:#fff;outline:none;transition:all .25s ease}
+.nav-card:focus,.nav-card:hover{border-color:#e11d48;transform:scale(1.03);background:rgba(225,29,72,0.2);box-shadow:0 10px 30px rgba(225,29,72,0.3)}
+.card-icon{font-size:2.5rem}
+.card-title{font-size:1.2rem;font-weight:800}
+.card-desc{font-size:0.8rem;color:#94a3b8}
+
+/* Fila de Continuar Viendo / Favoritos (Estilo Netflix) */
+.content-row{display:flex;flex-direction:column;gap:12px}
+.row-title{font-size:1.1rem;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:8px}
+.row-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px}
+.media-card{background:rgba(30,41,59,0.7);border-radius:12px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .2s;outline:none;position:relative}
+.media-card:focus,.media-card:hover{border-color:#e11d48;transform:scale(1.05)}
+.media-thumb{width:100%;height:100px;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#94a3b8}
+.media-info{padding:10px;font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.progress-bar{height:4px;background:#e11d48;width:65%}
 </style>
 </head>
 <body>
 
+<img src="logo.png" class="bg-logo-watermark" alt="Watermark" onerror="this.style.display='none'">
+
+<div id="splash-screen">
+  <img src="logo.png" class="splash-logo" alt="Logo" onerror="this.outerHTML='<div style=\'font-size:3rem;font-weight:900;color:#e11d48;margin-bottom:20px\'>RYOKIVA</div>'">
+  <div style="font-weight:600;color:#94a3b8;letter-spacing:2px">CARGANDO APLICACIÓN...</div>
+</div>
+
 <div class="header">
-  <div class="logo">▶ RYOKIVA</div>
-  <a href="profiles.html" class="profile-btn" tabindex="0">
-    <span style="font-size:1.2rem">👨‍💻</span>
-    <span style="font-size:0.9rem;font-weight:600">Cambiar Perfil</span>
+  <a href="index.html" class="brand-logo-small">
+    <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+    <span class="brand-title">RYOKIVA</span>
   </a>
+  <div class="header-right">
+    <div class="expiration-badge">
+      <span>⏳ Lista caduca en:</span>
+      <strong style="color:#f59e0b">5 días</strong>
+    </div>
+    <a href="profiles.html" class="profile-btn" tabindex="0">
+      <span style="font-size:1.2rem">👨‍💻</span>
+      <span style="font-size:0.9rem;font-weight:600">Cambiar Perfil</span>
+    </a>
+  </div>
 </div>
 
-<div class="main-grid">
-  <a href="tv.html" class="nav-card" tabindex="0">
-    <div class="card-icon">📺</div>
-    <div class="card-title">TV EN DIRECTO</div>
-    <div class="card-desc">Canales en vivo con guía de programación EPG</div>
-  </a>
+<div class="dashboard-container">
+  <!-- Accesos Principales -->
+  <div class="main-grid">
+    <a href="tv.html" class="nav-card" tabindex="0">
+      <div class="card-icon">📺</div>
+      <div class="card-title">TV EN DIRECTO</div>
+      <div class="card-desc">Canales en vivo y guía EPG</div>
+    </a>
 
-  <a href="vod.html" class="nav-card" tabindex="0">
-    <div class="card-icon">🎬</div>
-    <div class="card-title">PELÍCULAS Y SERIES</div>
-    <div class="card-desc">Catálogo de contenido bajo demanda (VOD)</div>
-  </a>
+    <a href="vod.html" class="nav-card" tabindex="0">
+      <div class="card-icon">🎬</div>
+      <div class="card-title">PELÍCULAS Y SERIES</div>
+      <div class="card-desc">Catálogo VOD bajo demanda</div>
+    </a>
 
-  <a href="settings.html" class="nav-card" tabindex="0">
-    <div class="card-icon">⚙️</div>
-    <div class="card-title">AJUSTES Y CÓDIGO QR</div>
-    <div class="card-desc">Gestión de 3 líneas M3U/Xtream y carga remota</div>
-  </a>
+    <a href="settings.html" class="nav-card" tabindex="0">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">AJUSTES Y QR</div>
+      <div class="card-desc">Carga web y 3 líneas de refuerzo</div>
+    </a>
+  </div>
+
+  <!-- Fila Continuar Viendo -->
+  <div class="content-row">
+    <div class="row-title">▶ Continuar Viendo</div>
+    <div class="row-items">
+      <div class="media-card" tabindex="0">
+        <div class="media-thumb">Reproduciendo...</div>
+        <div class="progress-bar"></div>
+        <div class="media-info">Interstellar (Min. 84)</div>
+      </div>
+      <div class="media-card" tabindex="0">
+        <div class="media-thumb">Reproduciendo...</div>
+        <div class="progress-bar" style="width:30%"></div>
+        <div class="media-info">La 1 HD - Telediario</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila Favoritos -->
+  <div class="content-row">
+    <div class="row-title">⭐ Mis Favoritos</div>
+    <div class="row-items">
+      <div class="media-card" tabindex="0">
+        <div class="media-thumb">Póster</div>
+        <div class="media-info">The Batman</div>
+      </div>
+      <div class="media-card" tabindex="0">
+        <div class="media-thumb">Póster</div>
+        <div class="media-info">Spider-Man: No Way Home</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+setTimeout(() => {
+  const splash = document.getElementById('splash-screen');
+  splash.style.opacity = '0';
+  setTimeout(() => splash.style.display = 'none', 800);
+}, 2500);
+</script>
 
 </body>
 </html>
