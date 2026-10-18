@@ -1,3 +1,5 @@
 [user]
 	email = tu-email@ejemplo.com
 	name = soportevortexplay-spec
+[credential]
+	helper = store
