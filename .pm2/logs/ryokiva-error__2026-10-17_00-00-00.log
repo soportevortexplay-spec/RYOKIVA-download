@@ -1,0 +1,180 @@
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: missing ) after argument list
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: Unexpected token '}'
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+SyntaxError: Unexpected token '}'
+    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:146:18)
+    at #translate (node:internal/modules/esm/loader:497:12)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:544:27)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:148:19)
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/root/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///root/server.js:1:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/root/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///root/server.js:1:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at consumeUntil (/root/node_modules/path-to-regexp/src/index.ts:218:17)
+    at parse (/root/node_modules/path-to-regexp/src/index.ts:262:24)
+    at process (/root/node_modules/path-to-regexp/src/index.ts:466:52)
+    at pathToRegexp (/root/node_modules/path-to-regexp/src/index.ts:478:3)
+    at Object.match (/root/node_modules/path-to-regexp/src/index.ts:416:28)
+    at matcher (/root/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/root/node_modules/router/lib/layer.js:93:62)
+    at Function.route (/root/node_modules/router/index.js:428:17)
+    at Function.route (/root/node_modules/express/lib/application.js:257:22)
+    at app.<computed> [as get] (/root/node_modules/express/lib/application.js:478:22) {
+  originalPath: '*'
+}
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at consumeUntil (/root/node_modules/path-to-regexp/src/index.ts:218:17)
+    at parse (/root/node_modules/path-to-regexp/src/index.ts:262:24)
+    at process (/root/node_modules/path-to-regexp/src/index.ts:466:52)
+    at pathToRegexp (/root/node_modules/path-to-regexp/src/index.ts:478:3)
+    at Object.match (/root/node_modules/path-to-regexp/src/index.ts:416:28)
+    at matcher (/root/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/root/node_modules/router/lib/layer.js:93:62)
+    at Function.route (/root/node_modules/router/index.js:428:17)
+    at Function.route (/root/node_modules/express/lib/application.js:257:22)
+    at app.<computed> [as get] (/root/node_modules/express/lib/application.js:478:22) {
+  originalPath: '*'
+}
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/root/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///root/server.js:1:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/root/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///root/server.js:1:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/root/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///root/server.js:1:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at consumeUntil (/root/node_modules/path-to-regexp/src/index.ts:218:17)
+    at parse (/root/node_modules/path-to-regexp/src/index.ts:262:24)
+    at process (/root/node_modules/path-to-regexp/src/index.ts:466:52)
+    at pathToRegexp (/root/node_modules/path-to-regexp/src/index.ts:478:3)
+    at Object.match (/root/node_modules/path-to-regexp/src/index.ts:416:28)
+    at matcher (/root/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/root/node_modules/router/lib/layer.js:93:62)
+    at Function.route (/root/node_modules/router/index.js:428:17)
+    at Function.route (/root/node_modules/express/lib/application.js:257:22)
+    at app.<computed> [as get] (/root/node_modules/express/lib/application.js:478:22) {
+  originalPath: '*'
+}
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at consumeUntil (/root/node_modules/path-to-regexp/src/index.ts:218:17)
+    at parse (/root/node_modules/path-to-regexp/src/index.ts:262:24)
+    at process (/root/node_modules/path-to-regexp/src/index.ts:466:52)
+    at pathToRegexp (/root/node_modules/path-to-regexp/src/index.ts:478:3)
+    at Object.match (/root/node_modules/path-to-regexp/src/index.ts:416:28)
+    at matcher (/root/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/root/node_modules/router/lib/layer.js:93:62)
+    at Function.route (/root/node_modules/router/index.js:428:17)
+    at Function.route (/root/node_modules/express/lib/application.js:257:22)
+    at app.<computed> [as get] (/root/node_modules/express/lib/application.js:478:22) {
+  originalPath: '*'
+}
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at consumeUntil (/root/node_modules/path-to-regexp/src/index.ts:218:17)
+    at parse (/root/node_modules/path-to-regexp/src/index.ts:262:24)
+    at process (/root/node_modules/path-to-regexp/src/index.ts:466:52)
+    at pathToRegexp (/root/node_modules/path-to-regexp/src/index.ts:478:3)
+    at Object.match (/root/node_modules/path-to-regexp/src/index.ts:416:28)
+    at matcher (/root/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/root/node_modules/router/lib/layer.js:93:62)
+    at Function.route (/root/node_modules/router/index.js:428:17)
+    at Function.route (/root/node_modules/express/lib/application.js:257:22)
+    at app.<computed> [as get] (/root/node_modules/express/lib/application.js:478:22) {
+  originalPath: '*'
+}

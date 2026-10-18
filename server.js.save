@@ -1,0 +1,17 @@
+import express from 'express';
+import notificationsRouter from './routes/notifications.js';
+import adminRouter from './routes/admin.js';
+import client;5uc
+	
+import particularRouter from './routes/particular.js';
+import dashboardRouter from './routes/dashboard.js';
+import stripeRouter from './routes/stripe.js';
+
+const app = express();
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('<html><body style="font-family: Arial; text-align: center; margin-top: 50px;"><h1>RYOKIVA Business & Particular</h1><p>Servidor activo y funcionando correctamente en la VPS.</p></body></html>')			
+
+app.use('/api/notifications', notificationsRouter);
+app.use('/api/admin', adminRouter)
