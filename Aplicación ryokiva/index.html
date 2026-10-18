@@ -1,1 +1,60 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RYOKIVA - TV en Directo</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("../fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}.top-bar{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(11,17,32,0.8);border-bottom:1px solid rgba(255,255,255,0.1)}.brand-badge{background:#e11d48;color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;text-decoration:none}.back-btn{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer;text-decoration:none}.content-layout{display:flex;flex:1;height:calc(100vh - 70px);padding:20px;gap:20px}.channels-sidebar{width:380px;background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;display:flex;flex-direction:column;overflow:hidden}.channel-list{overflow-y:auto;flex:1;padding:10px}.channel-item{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;margin-bottom:8px;background:rgba(30,41,59,0.6);border-radius:10px;cursor:pointer;border:2px solid transparent;transition:all .2s}.channel-item:focus,.channel-item:hover{background:rgba(225,29,72,0.3);border-color:#e11d48}.channel-name{font-weight:600;font-size:0.95rem}.channel-num{color:#94a3b8;font-size:0.85rem}.player-main{flex:1;display:flex;flex-direction:column;gap:20px}.video-screen{flex:1;background:rgba(0,0,0,0.6);border-radius:16px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.epg-panel{background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px}.epg-title{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:#e11d48}.epg-time{color:#94a3b8;font-size:0.9rem}</style></head><body><div class="top-bar"><a href="index.html" class="back-btn">← Volver al Menú</a><div class="brand-badge">▶ RYOKIVA - TV</div></div><div class="content-layout"><div class="channels-sidebar"><div class="channel-list"><div class="channel-item" tabindex="0"><span class="channel-name">[ES] SPAINS 4K</span><span class="channel-num">300</span></div><div class="channel-item" tabindex="0"><span class="channel-name">[ES] FÓRMULA 1</span><span class="channel-num">505</span></div><div class="channel-item" tabindex="0"><span class="channel-name">[ES] LALIGA HYPER</span><span class="channel-num">410</span></div><div class="channel-item" tabindex="0"><span class="channel-name">[ES] DAZN ACB</span><span class="channel-num">495</span></div><div class="channel-item" tabindex="0"><span class="channel-name">[ES] M LCAMPEON</span><span class="channel-num">460</span></div><div class="channel-item" tabindex="0"><span class="channel-name">[ES] BALONCESTO</span><span class="channel-num">498</span></div></div></div><div class="player-main"><div class="video-screen"><div style="text-align:center;color:#94a3b8"><h2>300. [ES] SPAINS 4K</h2><p>Selecciona un canal para reproducir en directo</p></div></div><div class="epg-panel"><div class="epg-title">[ES] SPAINS 4K UHD</div><div class="epg-time">21:00 - 21:45 | Noticias Cuatro</div><p style="color:#cbd5e1;font-size:0.9rem;margin-top:5px">Informativo vespertino de Cuatro que ofrece las noticias tanto nacionales como internacionales.</p></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - VOD</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("../fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top-bar{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(11,17,32,0.8);border-bottom:1px solid rgba(255,255,255,0.1)}
+.brand-badge{background:#e11d48;color:#fff;padding:6px 14px;border-radius:8px;font-weight:800;text-decoration:none}
+.back-btn{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer;text-decoration:none}
+.vod-layout{display:flex;flex:1;height:calc(100vh - 70px);padding:20px;gap:20px}
+.vod-sidebar{width:280px;background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:15px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.vod-menu-item{padding:10px 14px;background:rgba(30,41,59,0.5);border-radius:8px;cursor:pointer;font-size:0.9rem;border:2px solid transparent;transition:all .2s}
+.vod-menu-item:focus,.vod-menu-item:hover{background:rgba(225,29,72,0.3);border-color:#e11d48}
+.vod-content{flex:1;display:flex;flex-direction:column;gap:15px;overflow-y:auto;padding-right:5px}
+.vod-hero{background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:25px;display:flex;flex-direction:column;gap:10px}
+.vod-title{font-size:1.8rem;font-weight:800;color:#f8fafc}
+.vod-meta{display:flex;gap:15px;color:#94a3b8;font-size:0.9rem}
+.posters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:15px}
+.poster-card{background:rgba(30,41,59,0.7);border-radius:10px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .2s;outline:none}
+.poster-card:focus,.poster-card:hover{border-color:#e11d48;transform:scale(1.05)}
+.poster-img{width:100%;height:180px;background:#334155;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#94a3b8}
+.poster-title{padding:8px;font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="index.html" class="back-btn">← Volver al Menú</a>
+  <div class="brand-badge">▶ RYOKIVA - Películas</div>
+</div>
+<div class="vod-layout">
+  <div class="vod-sidebar">
+    <div class="vod-menu-item" tabindex="0">⭐ Top Rated</div>
+    <div class="vod-menu-item" tabindex="0">❤️ Favourite</div>
+    <div class="vod-menu-item" tabindex="0">🕒 History</div>
+    <div class="vod-menu-item" tabindex="0">📂 All</div>
+    <hr style="border-color:rgba(255,255,255,0.1);margin:8px 0">
+    <div class="vod-menu-item" tabindex="0">🎭 [ES] DRAMA</div>
+    <div class="vod-menu-item" tabindex="0">🚀 [ES] CIENCIA FICCIÓN</div>
+    <div class="vod-menu-item" tabindex="0">🔥 [ES] ACCIÓN</div>
+  </div>
+  <div class="vod-content">
+    <div class="vod-hero">
+      <div class="vod-title">Spider-Man: Brand New Day</div>
+      <div class="vod-meta"><span>⭐ 7.8/10</span><span>2hr 25min</span><span>2026</span></div>
+      <p style="color:#cbd5e1;font-size:0.9rem">Fighting crime full-time as Spider-Man in a world that doesn't remember him...</p>
+    </div>
+    <div style="font-weight:700;font-size:1.1rem;margin-top:5px">Recently Added</div>
+    <div class="posters-grid">
+      <div class="poster-card" tabindex="0"><div class="poster-img">Póster 1</div><div class="poster-title">Spider-Man</div></div>
+      <div class="poster-card" tabindex="0"><div class="poster-img">Póster 2</div><div class="poster-title">Instante</div></div>
+      <div class="poster-card" tabindex="0"><div class="poster-img">Póster 3</div><div class="poster-title">Savage</div></div>
+      <div class="poster-card" tabindex="0"><div class="poster-img">Póster 4</div><div class="poster-title">La Venganza</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
