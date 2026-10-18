@@ -1,1 +1,53 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RYOKIVA</title><style>body{font-family:system-ui,sans-serif;background:#0f172a url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;margin:0;text-align:center}header{padding:50px 20px;background:rgba(15,23,42,0.85);border-radius:16px;margin:20px;backdrop-filter:blur(5px)}h1{color:#38bdf8;font-size:2.2rem}p{color:#94a3b8;font-size:1.1rem;margin-bottom:25px}.btn{background:#0284c7;color:#fff;padding:12px 24px;text-decoration:none;border-radius:8px;display:inline-block;margin:6px;font-weight:700}.btn-sub{background:#334155}.btn-biz{background:#28a745}.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:20px}.card{background:rgba(30,41,59,0.9);padding:20px;border-radius:12px;width:280px;text-align:left;backdrop-filter:blur(5px)}.card h3{color:#fff;margin-top:0}.card p{font-size:.95rem;margin-bottom:0}footer{margin-top:40px;padding:20px;border-top:1px solid #334155;background:rgba(15,23,42,0.9)}footer a{color:#94a3b8;margin:0 10px;text-decoration:none}</style></head><body><header><h1>RYOKIVA</h1><p>Tu futuro en tus manos</p><div><a href="/login" class="btn">Entrar a mi Cuenta</a><a href="ayuda.html" class="btn btn-sub">Guía de Instalación</a></div><div style="margin-top:10px"><a href="http://217.160.106.77" target="_blank" class="btn btn-biz">Panel Business / Revendedores</a></div></header><div class="cards"><div class="card"><h3>📱 10 Dispositivos</h3><p>Conecta y gestiona hasta 10 televisores o móviles.</p></div><div class="card"><h3>👤 10 Perfiles</h3><p>Perfiles aislados con avatares, PIN e historial propio.</p></div><div class="card"><h3>🛡️ VPN Integrada</h3><p>Conexión segura y optimizada.</p></div></div><footer><a href="ayuda.html">Ayuda y FAQ</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:25px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+.logo{font-size:1.8rem;font-weight:900;color:#e11d48;letter-spacing:1px}
+.profile-btn{display:flex;align-items:center;gap:10px;background:rgba(30,41,59,0.8);padding:8px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);text-decoration:none;color:#fff;transition:all .2s}
+.profile-btn:focus,.profile-btn:hover{border-color:#e11d48;background:rgba(225,29,72,0.25)}
+.main-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1200px;margin:0 auto;width:100%}
+.nav-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:15px;text-decoration:none;color:#fff;outline:none;transition:all .25s ease}
+.nav-card:focus,.nav-card:hover{border-color:#e11d48;transform:scale(1.05);background:rgba(225,29,72,0.2);box-shadow:0 10px 30px rgba(225,29,72,0.3)}
+.card-icon{font-size:3rem}
+.card-title{font-size:1.3rem;font-weight:800}
+.card-desc{font-size:0.85rem;color:#94a3b8}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">▶ RYOKIVA</div>
+  <a href="profiles.html" class="profile-btn" tabindex="0">
+    <span style="font-size:1.2rem">👨‍💻</span>
+    <span style="font-size:0.9rem;font-weight:600">Cambiar Perfil</span>
+  </a>
+</div>
+
+<div class="main-grid">
+  <a href="tv.html" class="nav-card" tabindex="0">
+    <div class="card-icon">📺</div>
+    <div class="card-title">TV EN DIRECTO</div>
+    <div class="card-desc">Canales en vivo con guía de programación EPG</div>
+  </a>
+
+  <a href="vod.html" class="nav-card" tabindex="0">
+    <div class="card-icon">🎬</div>
+    <div class="card-title">PELÍCULAS Y SERIES</div>
+    <div class="card-desc">Catálogo de contenido bajo demanda (VOD)</div>
+  </a>
+
+  <a href="settings.html" class="nav-card" tabindex="0">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">AJUSTES Y CÓDIGO QR</div>
+    <div class="card-desc">Gestión de 3 líneas M3U/Xtream y carga remota</div>
+  </a>
+</div>
+
+</body>
+</html>
