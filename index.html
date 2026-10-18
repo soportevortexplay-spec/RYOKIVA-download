@@ -3,143 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>RYOKIVA - Streaming TV & Mobile</title>
+<title>RYOKIVA - Streaming Pro</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:20px;padding-top:env(safe-area-inset-top, 20px);padding-bottom:env(safe-area-inset-bottom, 20px);position:relative;overflow-x:hidden}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:20px;position:relative;overflow-x:hidden}
 
-.bg-logo-watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:70vw;max-width:500px;opacity:0.06;pointer-events:none;z-index:0}
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;z-index:10}
+.brand-title{font-size:1.6rem;font-weight:900;color:#e11d48;letter-spacing:1px}
+.user-badge{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:6px}
 
-#splash-screen{position:fixed;inset:0;background:#0b1120;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.8s ease}
-.splash-logo{width:130px;height:auto;margin-bottom:20px;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;z-index:1}
-.brand-logo-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
-.brand-logo-small img{height:36px;width:auto}
-.brand-title{font-size:1.4rem;font-weight:900;color:#e11d48;letter-spacing:1px}
-
-.header-right{display:flex;align-items:center;gap:10px}
-.expiration-badge{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.15);padding:6px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;color:#fbbf24;display:flex;align-items:center;gap:6px}
-
-.profile-btn{display:flex;align-items:center;gap:8px;background:rgba(30,41,59,0.8);padding:8px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);text-decoration:none;color:#fff;transition:all .2s;min-height:44px}
-.profile-btn:focus,.profile-btn:hover,.profile-btn:active{border-color:#e11d48;background:rgba(225,29,72,0.25)}
-
-/* Layouts adaptativos para TV, Tablet y Móvil */
-.dashboard-container{max-width:1200px;margin:0 auto;width:100%;z-index:1;display:flex;flex-direction:column;gap:25px;padding-bottom:60px}
-
-.main-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.nav-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;text-decoration:none;color:#fff;outline:none;transition:all .25s ease;min-height:120px;justify-content:center}
-.nav-card:focus,.nav-card:hover,.nav-card:active{border-color:#e11d48;transform:scale(1.02);background:rgba(225,29,72,0.2)}
-.card-icon{font-size:2.2rem}
+/* Menú Principal Grid */
+.main-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px;max-width:1000px;margin:20px auto;width:100%;z-index:5}
+.menu-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;cursor:pointer;outline:none;transition:all 0.2s ease;text-decoration:none;color:#fff}
+.menu-card:focus,.menu-card:hover{border-color:#e11d48;background:rgba(225,29,72,0.25);transform:scale(1.04);box-shadow:0 15px 35px rgba(225,29,72,0.4)}
+.card-icon{font-size:2.5rem}
 .card-title{font-size:1.1rem;font-weight:800}
-.card-desc{font-size:0.78rem;color:#94a3b8}
+.card-desc{font-size:0.75rem;color:#94a3b8}
 
-/* Filas estilo táctil */
-.content-row{display:flex;flex-direction:column;gap:10px}
-.row-title{font-size:1rem;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:8px}
-.row-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.media-card{background:rgba(30,41,59,0.7);border-radius:12px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .2s;outline:none;position:relative}
-.media-card:focus,.media-card:hover,.media-card:active{border-color:#e11d48;transform:scale(1.03)}
-.media-thumb{width:100%;height:90px;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#94a3b8}
-.media-info{padding:8px;font-size:0.8rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.progress-bar{height:4px;background:#e11d48;width:65%}
+/* Mini-reproductor y Favoritos */
+.section-title{font-size:0.95rem;font-weight:800;color:#94a3b8;max-width:1000px;margin:10px auto 10px auto;width:100%;z-index:5}
+.mini-player-container{display:grid;grid-template-columns:1fr 2fr;gap:20px;max-width:1000px;margin:0 auto;width:100%;z-index:5}
+.channels-list{background:rgba(15,23,42,0.85);border-radius:16px;padding:15px;display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto}
+.channel-item{background:rgba(30,41,59,0.7);padding:10px 12px;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;border:1px solid transparent}
+.channel-item:focus,.channel-item:hover{border-color:#e11d48;background:rgba(225,29,72,0.3)}
 
-/* Media Query para pantallas pequeñas (Smartphones) */
-@media (max-width: 600px) {
-  body{padding:12px}
-  .header-title{font-size:1.1rem}
-  .expiration-badge{display:none} /* Se oculta badge extenso en móviles pequeños */
-  .main-grid{grid-template-columns:1fr} /* Tarjetas en una sola columna en móvil */
-  .row-items{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
-}
+.player-preview{background:rgba(15,23,42,0.9);border-radius:16px;border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;position:relative}
+.live-badge{position:absolute;top:15px;right:15px;background:#e11d48;color:#fff;font-size:0.65rem;font-weight:800;padding:4px 8px;border-radius:6px}
 </style>
 </head>
 <body>
 
-<img src="logo.png" class="bg-logo-watermark" alt="Watermark" onerror="this.style.display='none'">
-
-<div id="splash-screen">
-  <img src="logo.png" class="splash-logo" alt="Logo" onerror="this.outerHTML='<div style=\'font-size:2.5rem;font-weight:900;color:#e11d48;margin-bottom:20px\'>RYOKIVA</div>'">
-  <div style="font-weight:600;color:#94a3b8;letter-spacing:2px;font-size:0.85rem">CARGANDO APLICACIÓN...</div>
+<div class="top-bar">
+  <div class="brand-title">RYOKIVA</div>
+  <div class="user-badge"><span>⭐ Caduca: 5 días</span> | <span>👤 Perfil: Principal</span></div>
 </div>
 
-<div class="header">
-  <a href="index.html" class="brand-logo-small">
-    <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
-    <span class="brand-title">RYOKIVA</span>
+<div class="main-grid">
+  <a href="tv.html" class="menu-card" tabindex="0">
+    <div class="card-icon">📺</div>
+    <div class="card-title">TV EN DIRECTO</div>
+    <div class="card-desc">Canales en vivo y EPG</div>
   </a>
-  <div class="header-right">
-    <div class="expiration-badge">
-      <span>⏳ Caduca:</span>
-      <strong style="color:#f59e0b">5 días</strong>
-    </div>
-    <a href="profiles.html" class="profile-btn" tabindex="0">
-      <span style="font-size:1.1rem">👨‍💻</span>
-      <span style="font-size:0.85rem;font-weight:600">Perfil</span>
-    </a>
+
+  <a href="vod.html" class="menu-card" tabindex="0">
+    <div class="card-icon">🎬</div>
+    <div class="card-title">PELÍCULAS Y SERIES</div>
+    <div class="card-desc">Catálogo VOD Separado</div>
+  </a>
+
+  <a href="settings.html" class="menu-card" tabindex="0">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">AJUSTES Y QR</div>
+    <div class="card-desc">3 líneas de failover y perfiles</div>
+  </a>
+</div>
+
+<div class="section-title">▶ Continu Viendo / Preview</div>
+<div class="mini-player-container">
+  <div class="channels-list">
+    <div class="channel-item" tabindex="0">01. La 1 HD</div>
+    <div class="channel-item" tabindex="0">02. Antena 3 HD</div>
+    <div class="channel-item" tabindex="0">03. Movistar Deportes</div>
+  </div>
+  <div class="player-preview">
+    <div class="live-badge">EN VIVO</div>
+    <div style="font-size:1.1rem;font-weight:800;margin-bottom:5px">REPRODUCTOR EN VIVO</div>
+    <div style="font-size:0.8rem;color:#94a3b8">Pulsa 2 veces [OK] para Pantalla Completa</div>
   </div>
 </div>
 
-<div class="dashboard-container">
-  <div class="main-grid">
-    <a href="tv.html" class="nav-card" tabindex="0">
-      <div class="card-icon">📺</div>
-      <div class="card-title">TV EN DIRECTO</div>
-      <div class="card-desc">Canales en vivo y EPG</div>
-    </a>
-
-    <a href="vod.html" class="nav-card" tabindex="0">
-      <div class="card-icon">🎬</div>
-      <div class="card-title">PELÍCULAS Y SERIES</div>
-      <div class="card-desc">Catálogo VOD</div>
-    </a>
-
-    <a href="settings.html" class="nav-card" tabindex="0">
-      <div class="card-icon">⚙️</div>
-      <div class="card-title">AJUSTES Y QR</div>
-      <div class="card-desc">3 líneas de refuerzo y carga</div>
-    </a>
-  </div>
-
-  <div class="content-row">
-    <div class="row-title">▶ Continuar Viendo</div>
-    <div class="row-items">
-      <div class="media-card" tabindex="0">
-        <div class="media-thumb">Reproduciendo...</div>
-        <div class="progress-bar"></div>
-        <div class="media-info">Interstellar</div>
-      </div>
-      <div class="media-card" tabindex="0">
-        <div class="media-thumb">Reproduciendo...</div>
-        <div class="progress-bar" style="width:30%"></div>
-        <div class="media-info">La 1 HD</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-row">
-    <div class="row-title">⭐ Mis Favoritos</div>
-    <div class="row-items">
-      <div class="media-card" tabindex="0">
-        <div class="media-thumb">Póster</div>
-        <div class="media-info">The Batman</div>
-      </div>
-      <div class="media-card" tabindex="0">
-        <div class="media-thumb">Póster</div>
-        <div class="media-info">Spider-Man</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-setTimeout(() => {
-  const splash = document.getElementById('splash-screen');
-  splash.style.opacity = '0';
-  setTimeout(() => splash.style.display = 'none', 800);
-}, 2500);
-</script>
-
+<script src="tv-navigation.js"></script>
 </body>
 </html>
