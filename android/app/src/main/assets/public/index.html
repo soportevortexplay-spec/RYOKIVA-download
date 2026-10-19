@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>RYOKIVA - Streaming Pro</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:20px;position:relative;overflow-x:hidden}
+
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;z-index:10}
+.brand-title{font-size:1.6rem;font-weight:900;color:#e11d48;letter-spacing:1px}
+.user-badge{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:6px}
+
+/* Menú Principal Grid */
+.main-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px;max-width:1000px;margin:20px auto;width:100%;z-index:5}
+.menu-card{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;cursor:pointer;outline:none;transition:all 0.2s ease;text-decoration:none;color:#fff}
+.menu-card:focus,.menu-card:hover{border-color:#e11d48;background:rgba(225,29,72,0.25);transform:scale(1.04);box-shadow:0 15px 35px rgba(225,29,72,0.4)}
+.card-icon{font-size:2.5rem}
+.card-title{font-size:1.1rem;font-weight:800}
+.card-desc{font-size:0.75rem;color:#94a3b8}
+
+/* Mini-reproductor y Favoritos */
+.section-title{font-size:0.95rem;font-weight:800;color:#94a3b8;max-width:1000px;margin:10px auto 10px auto;width:100%;z-index:5}
+.mini-player-container{display:grid;grid-template-columns:1fr 2fr;gap:20px;max-width:1000px;margin:0 auto;width:100%;z-index:5}
+.channels-list{background:rgba(15,23,42,0.85);border-radius:16px;padding:15px;display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto}
+.channel-item{background:rgba(30,41,59,0.7);padding:10px 12px;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;border:1px solid transparent}
+.channel-item:focus,.channel-item:hover{border-color:#e11d48;background:rgba(225,29,72,0.3)}
+
+.player-preview{background:rgba(15,23,42,0.9);border-radius:16px;border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;position:relative}
+.live-badge{position:absolute;top:15px;right:15px;background:#e11d48;color:#fff;font-size:0.65rem;font-weight:800;padding:4px 8px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="brand-title">RYOKIVA</div>
+  <div class="user-badge"><span>⭐ Caduca: 5 días</span> | <span>👤 Perfil: Principal</span></div>
+</div>
+
+<div class="main-grid">
+  <a href="tv.html" class="menu-card" tabindex="0">
+    <div class="card-icon">📺</div>
+    <div class="card-title">TV EN DIRECTO</div>
+    <div class="card-desc">Canales en vivo y EPG</div>
+  </a>
+
+  <a href="vod.html" class="menu-card" tabindex="0">
+    <div class="card-icon">🎬</div>
+    <div class="card-title">PELÍCULAS Y SERIES</div>
+    <div class="card-desc">Catálogo VOD Separado</div>
+  </a>
+
+  <a href="settings.html" class="menu-card" tabindex="0">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">AJUSTES Y QR</div>
+    <div class="card-desc">3 líneas de failover y perfiles</div>
+  </a>
+</div>
+
+<div class="section-title">▶ Continu Viendo / Preview</div>
+<div class="mini-player-container">
+  <div class="channels-list">
+    <div class="channel-item" tabindex="0">01. La 1 HD</div>
+    <div class="channel-item" tabindex="0">02. Antena 3 HD</div>
+    <div class="channel-item" tabindex="0">03. Movistar Deportes</div>
+  </div>
+  <div class="player-preview">
+    <div class="live-badge">EN VIVO</div>
+    <div style="font-size:1.1rem;font-weight:800;margin-bottom:5px">REPRODUCTOR EN VIVO</div>
+    <div style="font-size:0.8rem;color:#94a3b8">Pulsa 2 veces [OK] para Pantalla Completa</div>
+  </div>
+</div>
+
+<script src="tv-navigation.js"></script>
+</body>
+</html>

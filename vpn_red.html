@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOKIVA - VPN & Ajustes de Red</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px 50px;
+        }
+
+        /* Cabecera */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 26px;
+            color: #38bdf8;
+        }
+        .btn-back {
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Layout Principal */
+        .network-container {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            max-height: 500px;
+        }
+
+        /* Bloque VPN Anti-Cortes */
+        .vpn-block {
+            flex: 1;
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        .vpn-block h3 {
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vpn-block p {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .vpn-status-card {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
+        .dot.off {
+            background: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        .btn-vpn-toggle {
+            background: #0284c7;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .server-select {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .server-option {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #cbd5e1;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .server-option:focus, .server-option:hover, .server-option.active {
+            outline: none;
+            border-color: #38bdf8;
+            background: #1b2742;
+            color: #fff;
+        }
+
+        /* Bloque Ajustes de Reproductor y Búfer */
+        .player-settings-block {
+            flex: 1;
+            background: #0f1626;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .player-settings-block h3 {
+            font-size: 18px;
+            color: #38bdf8;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            padding: 14px 18px;
+            border-radius: 10px;
+        }
+        .setting-row:focus, .setting-row:hover {
+            outline: none;
+            border-color: #38bdf8;
+            background: #1b2742;
+        }
+        .setting-label h4 {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .setting-label p {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        select {
+            background: #131b2e;
+            color: #38bdf8;
+            border: 1px solid #1f2d4a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>VPN Anti-Cortes & Red</h1>
+        <button class="btn-back" onclick="location.href='dashboard.html'">Volver al Menú</button>
+    </header>
+
+    <div class="network-container">
+        
+        <!-- 1. SERVICIO VPN ANTI-BLOQUEOS -->
+        <div class="vpn-block">
+            <h3><span>🛡️</span> VPN Aislada por Perfil</h3>
+            <p>Evita los bloqueos de operadores en partidos en directo</p>
+            
+            <div class="vpn-status-card">
+                <div class="status-indicator">
+                    <div class="dot" id="vpn-dot"></div>
+                    <span id="vpn-status-text">VPN Protegida (WireGuard)</span>
+                </div>
+                <button class="btn-vpn-toggle" tabindex="1" onclick="toggleVPN()">Desconectar</button>
+            </div>
+
+            <div class="server-select">
+                <div style="font-size: 12px; color: #64748b; margin-bottom: 5px;">Servidores Optimizados RYOKIVA:</div>
+                <div class="server-option active" tabindex="2" onclick="seleccionarServidor(this, 'Fráncfort (Baja Latencia)')">
+                    <span>🇩🇪 Fráncfort - Servidor Directo #1</span>
+                    <span style="color: #22c55e;">18 ms</span>
+                </div>
+                <div class="server-option" tabindex="3" onclick="seleccionarServidor(this, 'Ámsterdam (Anti-Throttling)')">
+                    <span>🇳🇱 Ámsterdam - Anti-Bloqueos #2</span>
+                    <span style="color: #22c55e;">24 ms</span>
+                </div>
+                <div class="server-option" tabindex="4" onclick="seleccionarServidor(this, 'Madrid (Express)')">
+                    <span>🇪🇸 Madrid - Túnel Local</span>
+                    <span style="color: #38bdf8;">12 ms</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. MOTOR DE REPRODUCCIÓN Y BÚFER -->
+        <div class="player-settings-block">
+            <h3>⚡ Optimización de Reproducción</h3>
+            
+            <div class="setting-row" tabindex="5">
+                <div class="setting-label">
+                    <h4>Protocolo de Streaming</h4>
+                    <p>MPEG-TS recomendable para directo / HLS para VOD</p>
+                </div>
+                <select id="protocol-select">
+                    <option value="ts" selected>MPEG-TS (Directo)</option>
+                    <option value="hls">HLS / m3u8 (Adaptativo)</option>
+                    <option value="dash">MPEG-DASH</option>
+                </select>
+            </div>
+
+            <div class="setting-row" tabindex="6">
+                <div class="setting-label">
+                    <h4>Tamaño de Búfer (Anti-Parones)</h4>
+                    <p>Aumentar en conexiones inestables o Wi-Fi</p>
+                </div>
+                <select id="buffer-select">
+                    <option value="small">Bajo (2 segundos - Ultrarrápido)</option>
+                    <option value="medium" selected>Normal (5 segundos - Recomendado)</option>
+                    <option value="large">Alto (10 segundos - Conexión Lenta)</option>
+                </select>
+            </div>
+
+            <div class="setting-row" tabindex="7">
+                <div class="setting-label">
+                    <h4>Decodificación de Vídeo</h4>
+                    <p>Aprovecha la aceleración por GPU de la TV</p>
+                </div>
+                <select id="decode-select">
+                    <option value="hardware" selected>Hardware (ExoPlayer)</option>
+                    <option value="software">Software (Compatibilidad)</option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let vpnActiva = true;
+
+        function toggleVPN() {
+            const dot = document.getElementById('vpn-dot');
+            const txt = document.getElementById('vpn-status-text');
+            const btn = document.querySelector('.btn-vpn-toggle');
+
+            if (vpnActiva) {
+                dot.classList.add('off');
+                txt.innerText = "VPN Desconectada";
+                btn.innerText = "Conectar";
+                btn.style.background = "#16a34a";
+                vpnActiva = false;
+            } else {
+                dot.classList.remove('off');
+                txt.innerText = "VPN Protegida (WireGuard)";
+                btn.innerText = "Desconectar";
+                btn.style.background = "#0284c7";
+                vpnActiva = true;
+            }
+        }
+
+        function seleccionarServidor(elemento, nombre) {
+            document.querySelectorAll('.server-option').forEach(el => el.classList.remove('active'));
+            elemento.classList.add('active');
+            alert("Cambiando túnel VPN a: " + nombre);
+        }
+
+        window.addEventListener('load', () => {
+            document.querySelector('.btn-vpn-toggle').focus();
+        });
+    </script>
+</body>
+</html>

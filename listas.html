@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Mis Listas</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0f19; color: #fff; font-family: sans-serif; min-height: 100vh; padding: 30px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+h1 { font-size: 24px; color: #38bdf8; }
+.back-btn { background: #334155; border: none; color: #fff; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.back-btn:focus { background: #0284c7; outline: 2px solid #38bdf8; }
+.list-container { display: flex; flex-direction: column; gap: 15px; }
+.item { background: #1e293b; padding: 18px 24px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 2px solid transparent; cursor: pointer; }
+.item:focus, .item:hover { border-color: #38bdf8; background: #0f172a; outline: none; }
+.title { font-weight: 600; font-size: 16px; }
+.status { font-size: 12px; color: #4ade80; background: rgba(74,222,128,0.1); padding: 4px 10px; border-radius: 12px; }
+</style>
+<script src="api.js"></script>
+</head><body>
+<div class="header"><h1>📋 Mis Listas IPTV / Xtream</h1><button class="back-btn" tabindex="1" onclick="location.href=\x27dashboard.html\x27">⬅ Volver</button></div>
+<div class="list-container" id="lContainer"></div>
+<script>
+async function cargarListas() {
+  const box = document.getElementById("lContainer");
+  let listas = [{id: 1, nombre: "Lista Principal M3U", canales: 4500, estado: "Activa"}, {id: 2, nombre: "Deportes & Eventos", canales: 1200, estado: "Activa"}];
+  try {
+    if (window.RyokivaAPI) {
+      const profileId = localStorage.getItem("ryokiva_active_profile") || 1;
+      const res = await RyokivaAPI.getListas(profileId);
+      if (res && res.length) listas = res;
+    }
+  } catch (e) {}
+  box.innerHTML = listas.map((l, i) => `<div class="item" tabindex="${i+2}" onclick="location.href=\x27reproductor.html?lista=${l.id}\x27"><div><div class="title">${l.nombre}</div><div style="font-size:12px;color:#94a3b8;margin-top:4px;">${l.canales || 0} canales cargados</div></div><div class="status">${l.estado || "Conectada"}</div></div>`).join("");
+  setTimeout(() => { const f = document.querySelector(".item"); if (f) f.focus(); }, 100);
+}
+window.onload = cargarListas;
+</script></body></html>

@@ -1,102 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>RYOKIVA - Películas y Series</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - VOD</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;padding:20px;position:relative;overflow-x:hidden}
-
-.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;z-index:10}
-.brand-title{font-size:1.4rem;font-weight:900;color:#e11d48;letter-spacing:1px;text-decoration:none}
-.back-btn{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:8px 16px;border-radius:10px;cursor:pointer;text-decoration:none;font-size:0.85rem;font-weight:600}
-
-/* Pestañas Películas / Series */
-.tabs-container{display:flex;gap:12px;margin-bottom:20px;z-index:5}
-.tab-btn{flex:1;padding:12px;background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.15);color:#94a3b8;border-radius:12px;font-weight:800;font-size:1rem;cursor:pointer;text-align:center;outline:none;transition:all 0.2s}
-.tab-btn.active,.tab-btn:focus{background:#e11d48;color:#fff;border-color:#f43f5e;transform:scale(1.02)}
-
-.search-box{margin-bottom:20px;width:100%;z-index:5}
-.search-input{width:100%;background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:12px 18px;border-radius:12px;font-size:0.95rem;outline:none}
-.search-input:focus{border-color:#e11d48}
-
-.grid-vod{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;z-index:5}
-.vod-card{background:rgba(15,23,42,0.85);border:2px solid transparent;border-radius:14px;overflow:hidden;cursor:pointer;outline:none;transition:all 0.2s;display:flex;flex-direction:column}
-.vod-card:focus,.vod-card:hover{border-color:#e11d48;transform:scale(1.05);box-shadow:0 10px 25px rgba(225,29,72,0.4)}
-.poster-placeholder{height:200px;background:#1e293b;display:flex;align-items:center;justify-content:center;color:#64748b;font-weight:700;font-size:0.8rem;text-align:center;padding:10px}
-.vod-info{padding:10px;display:flex;flex-direction:column;gap:4px}
-.vod-title{font-size:0.85rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vod-meta{font-size:0.7rem;color:#e11d48;font-weight:700}
-
-/* Modal de Series / Temporadas */
-.series-modal{position:fixed;inset:0;background:rgba(11,17,32,0.95);backdrop-filter:blur(15px);z-index:50;display:none;flex-direction:column;padding:25px;overflow-y:auto}
-.close-modal{align-self:flex-end;background:#e11d48;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:800;cursor:pointer;margin-bottom:15px}
-.episodes-list{display:flex;flex-direction:column;gap:10px;margin-top:15px}
-.episode-item{background:rgba(30,41,59,0.8);border:1px solid rgba(255,255,255,0.1);padding:12px;border-radius:10px;cursor:pointer;outline:none}
-.episode-item:focus,.episode-item:hover{border-color:#e11d48;background:rgba(225,29,72,0.25)}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0f19; color: #fff; font-family: sans-serif; padding: 25px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+h1 { font-size: 22px; color: #38bdf8; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+.poster { background: #1e293b; height: 180px; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 2px solid transparent; cursor: pointer; padding: 10px; }
+.poster:focus, .poster:hover { border-color: #38bdf8; background: #0284c7; outline: none; }
 </style>
-</head>
-<body>
-
-<div class="top-bar">
-  <a href="index.html" class="back-btn" tabindex="0">← Menú Principal</a>
-  <a href="index.html" class="brand-title">RYOKIVA VOD</a>
-</div>
-
-<div class="tabs-container">
-  <button class="tab-btn active" id="btn-movies" onclick="switchCategory('movies')" tabindex="0">🎬 PELÍCULAS</button>
-  <button class="tab-btn" id="btn-series" onclick="switchCategory('series')" tabindex="0">📺 SERIES Y TEMPORADAS</button>
-</div>
-
-<div class="search-box">
-  <input type="text" class="search-input" id="search-input" placeholder="Buscar película o serie..." tabindex="0">
-</div>
-
-<!-- Películas -->
-<div class="grid-vod" id="movies-grid">
-  <div class="vod-card" tabindex="0" onclick="alert('Reproduciendo Película 4K')">
-    <div class="poster-placeholder">POSTER 4K</div>
-    <div class="vod-info"><div class="vod-title">Spider-Man: No Way Home</div><div class="vod-meta">2021 • 4K HDR</div></div>
-  </div>
-  <div class="vod-card" tabindex="0" onclick="alert('Reproduciendo Película 4K')">
-    <div class="poster-placeholder">POSTER 4K</div>
-    <div class="vod-info"><div class="vod-title">Interstellar</div><div class="vod-meta">2014 • IMAX</div></div>
-  </div>
-</div>
-
-<!-- Series -->
-<div class="grid-vod" id="series-grid" style="display:none">
-  <div class="vod-card" tabindex="0" onclick="openSeries('Stranger Things')">
-    <div class="poster-placeholder">SERIE POSTER</div>
-    <div class="vod-info"><div class="vod-title">Stranger Things</div><div class="vod-meta">4 Temporadas</div></div>
-  </div>
-</div>
-
-<div class="series-modal" id="series-modal">
-  <button class="close-modal" onclick="closeSeriesModal()" tabindex="0">✕ Cerrar</button>
-  <h2 id="modal-series-title" style="color:#e11d48;margin-bottom:5px">Serie</h2>
-  <div class="episodes-list">
-    <div class="episode-item" tabindex="0" onclick="alert('Reproduciendo Episodio 1')"><b>E01 - Capítulo 1</b></div>
-    <div class="episode-item" tabindex="0" onclick="alert('Reproduciendo Episodio 2')"><b>E02 - Capítulo 2</b></div>
-  </div>
-</div>
-
+<script src="api.js"></script>
+</head><body>
+<div class="header"><h1>🎬 Cine y Series (VOD)</h1><button style="background:#334155;color:#fff;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;" tabindex="1" onclick="location.href=\x27dashboard.html\x27">⬅ Volver</button></div>
+<div class="grid" id="vBox"></div>
 <script>
-function switchCategory(cat) {
-  document.getElementById('btn-movies').classList.toggle('active', cat === 'movies');
-  document.getElementById('btn-series').classList.toggle('active', cat === 'series');
-  document.getElementById('movies-grid').style.display = cat === 'movies' ? 'grid' : 'none';
-  document.getElementById('series-grid').style.display = cat === 'series' ? 'grid' : 'none';
-}
-function openSeries(title) {
-  document.getElementById('modal-series-title').innerText = title;
-  document.getElementById('series-modal').style.display = 'flex';
-}
-function closeSeriesModal() {
-  document.getElementById('series-modal').style.display = 'none';
-}
-</script>
-<script src="tv-navigation.js"></script>
-</body>
-</html>
+window.onload = () => {
+  const vods = [{t:"Estrenos 2026",i:"🍿"},{t:"Top Películas",i:"⭐"},{t:"Series Tendencia",i:"🔥"},{t:"Acción & Sci-Fi",i:"🚀"}];
+  document.getElementById("vBox").innerHTML = vods.map((item, i) => `<div class="poster" tabindex="${i+2}" onclick="location.href=\x27reproductor.html\x27"><div style="font-size:36px;margin-bottom:8px;">${item.i}</div><div style="font-weight:bold;font-size:14px;">${item.t}</div></div>`).join("");
+  const f = document.querySelector(".poster"); if(f) f.focus();
+};
+</script></body></html>

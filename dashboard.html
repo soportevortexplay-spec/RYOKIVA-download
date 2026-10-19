@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Super App Dashboard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0f19; color: #fff; font-family: sans-serif; min-height: 100vh; padding: 25px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.logo { font-size: 24px; font-weight: bold; color: #38bdf8; letter-spacing: 2px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+.btn-card { background: #1e293b; border-radius: 12px; padding: 20px 15px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+.btn-card:focus, .btn-card:hover { border-color: #38bdf8; transform: scale(1.05); outline: none; background: #0284c7; }
+.icon { font-size: 36px; margin-bottom: 8px; }
+.title { font-size: 15px; font-weight: 600; }
+</style>
+<script src="api.js"></script>
+</head><body>
+<div class="header"><div class="logo">RYOKIVA</div><div id="uInfo" style="font-size:14px;color:#94a3b8;">Perfil Activo</div></div>
+<div class="grid">
+<div class="btn-card" tabindex="1" onclick="location.href=\x27reproductor.html\x27"><div class="icon">📺</div><div class="title">TV Directo</div></div>
+<div class="btn-card" tabindex="2" onclick="location.href=\x27vod.html\x27"><div class="icon">🎬</div><div class="title">Cine & Series</div></div>
+<div class="btn-card" tabindex="3" onclick="location.href=\x27epg.html\x27"><div class="icon">📅</div><div class="title">Guía EPG</div></div>
+<div class="btn-card" tabindex="4" onclick="location.href=\x27buscar.html\x27"><div class="icon">🔍</div><div class="title">Buscador</div></div>
+<div class="btn-card" tabindex="5" onclick="location.href=\x27listas.html\x27"><div class="icon">📋</div><div class="title">Mis Listas</div></div>
+<div class="btn-card" tabindex="6" onclick="location.href=\x27favoritos.html\x27"><div class="icon">⭐</div><div class="title">Favoritos</div></div>
+<div class="btn-card" tabindex="7" onclick="location.href=\x27cuenta.html\x27"><div class="icon">👑</div><div class="title">Mi Cuenta</div></div>
+<div class="btn-card" tabindex="8" onclick="location.href=\x27ajustes.html\x27"><div class="icon">⚙️</div><div class="title">Ajustes</div></div>
+</div>
+<script>
+window.onload = () => {
+  const pid = localStorage.getItem("ryokiva_active_profile") || "1";
+  document.getElementById("uInfo").innerText = "Perfil #" + pid;
+  const first = document.querySelector(".btn-card");
+  if(first) first.focus();
+};
+</script></body></html>

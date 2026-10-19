@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Perfiles</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0f19; color: #fff; font-family: sans-serif; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+h1 { margin-bottom: 25px; font-size: 26px; }
+.profiles { display: flex; gap: 20px; }
+.card { background: #1e293b; border-radius: 12px; padding: 20px; width: 130px; text-align: center; cursor: pointer; border: 2px solid transparent; }
+.card:focus, .card:hover { border-color: #38bdf8; transform: scale(1.05); outline: none; }
+.avatar { font-size: 40px; margin-bottom: 10px; }
+</style>
+<script src="api.js"></script>
+</head><body>
+<h1>¿Quién está viendo RYOKIVA?</h1>
+<div class="profiles" id="pBox"></div>
+<script>
+async function init() {
+  let p = [{id:1,n:"Principal",a:"📺"},{id:2,n:"Familia",a:"🎬"},{id:3,n:"Infantil",a:"🧸"}];
+  try { if(window.RyokivaAPI){ let res = await RyokivaAPI.getPerfiles(); if(res&&res.length) p = res; } } catch(e){}
+  document.getElementById("pBox").innerHTML = p.map((item,i) => `<div class="card" tabindex="${i+1}" onclick="localStorage.setItem(\x27ryokiva_active_profile\x27,${item.id});location.href=\x27dashboard.html\x27"><div class="avatar">${item.a||"👤"}</div><div>${item.n}</div></div>`).join("");
+  setTimeout(() => { let c = document.querySelector(".card"); if(c) c.focus(); }, 100);
+}
+window.onload = init;
+</script></body></html>

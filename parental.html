@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOKIVA - Control Parental</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px 50px;
+        }
+
+        /* Cabecera */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 26px;
+            color: #38bdf8;
+        }
+        .btn-back {
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Layout */
+        .parental-container {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            max-height: 500px;
+        }
+
+        /* Lista de categorías a proteger */
+        .categories-block {
+            flex: 1.2;
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        .categories-block h3 {
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+        }
+        .cat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .cat-row {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .cat-row:focus, .cat-row:hover {
+            outline: none;
+            border-color: #38bdf8;
+            background: #1b2742;
+        }
+        .cat-info h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .cat-info p {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* Switch indicador de bloqueo */
+        .lock-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .lock-badge.locked {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+        .lock-badge.unlocked {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+
+        /* Bloque de cambio de PIN */
+        .pin-config-block {
+            flex: 0.8;
+            background: #0f1626;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .pin-config-block h3 {
+            font-size: 18px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .pin-config-block p {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            max-width: 240px;
+        }
+        .btn-change-pin {
+            background: #0284c7;
+            border: none;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            max-width: 220px;
+        }
+        .btn-change-pin:focus, .btn-change-pin:hover {
+            background: #0369a1;
+            outline: 2px solid #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Control Parental</h1>
+        <button class="btn-back" onclick="location.href='dashboard.html'">Volver al Menú</button>
+    </header>
+
+    <div class="parental-container">
+        
+        <!-- Categorías a proteger -->
+        <div class="categories-block">
+            <h3>Categorías Protegidas</h3>
+            <div class="cat-list">
+                
+                <div class="cat-row" tabindex="1" onclick="toggleBloqueo(this)">
+                    <div class="cat-info">
+                        <h4>🔞 Canales de Adultos (+18)</h4>
+                        <p>Requiere PIN para mostrar catálogo y reproducir</p>
+                    </div>
+                    <span class="lock-badge locked">Bloqueado</span>
+                </div>
+
+                <div class="cat-row" tabindex="2" onclick="toggleBloqueo(this)">
+                    <div class="cat-info">
+                        <h4>💳 Eventos PPV / Pago por Visión</h4>
+                        <p>Evita contrataciones accidentales</p>
+                    </div>
+                    <span class="lock-badge locked">Bloqueado</span>
+                </div>
+
+                <div class="cat-row" tabindex="3" onclick="toggleBloqueo(this)">
+                    <div class="cat-info">
+                        <h4>⚙️ Menú de Ajustes y Red</h4>
+                        <p>Protege la configuración de la app</p>
+                    </div>
+                    <span class="lock-badge unlocked">Desbloqueado</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Cambio de PIN Maestro -->
+        <div class="pin-config-block">
+            <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
+            <h3>PIN Parental Maestro</h3>
+            <p>El PIN por defecto es <strong>0000</strong>. Puedes cambiarlo para restringir el acceso a categorías seleccionadas.</p>
+            
+            <button class="btn-change-pin" tabindex="4" onclick="cambiarPinMaestro()">Cambiar PIN Maestro</button>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleBloqueo(elemento) {
+            const badge = elemento.querySelector('.lock-badge');
+            if (badge.classList.contains('locked')) {
+                badge.classList.remove('locked');
+                badge.classList.add('unlocked');
+                badge.innerText = "Desbloqueado";
+            } else {
+                badge.classList.remove('unlocked');
+                badge.classList.add('locked');
+                badge.innerText = "Bloqueado";
+            }
+        }
+
+        function cambiarPinMaestro() {
+            const actual = prompt("Introduce tu PIN actual:");
+            if (actual === "0000" || actual === "1234") {
+                const nuevo = prompt("Introduce tu nuevo PIN (4 dígitos):");
+                if (nuevo && nuevo.length === 4) {
+                    alert("PIN Maestro actualizado con éxito.");
+                    localStorage.setItem('ryokiva_parental_pin', nuevo);
+                } else {
+                    alert("El PIN debe tener exactamente 4 dígitos.");
+                }
+            } else {
+                alert("PIN actual incorrecto.");
+            }
+        }
+
+        window.addEventListener('load', () => {
+            document.querySelector('.cat-row').focus();
+        });
+    </script>
+</body>
+</html>

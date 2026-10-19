@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOKIVA - TV en Directo</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Menú lateral de categorías/canales (Punto 6 integrado) */
+        .sidebar {
+            width: 320px;
+            background: #131b2e;
+            border-right: 1px solid #1f2d4a;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .sidebar-header h3 {
+            font-size: 18px;
+            color: #38bdf8;
+        }
+        .btn-back {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            color: #94a3b8;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Lista de Canales vertical */
+        .channel-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 5px;
+        }
+        .channel-item {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+        .channel-item:focus, .channel-item:hover, .channel-item.active {
+            outline: none;
+            border-color: #38bdf8;
+            background: #1b2742;
+        }
+        .channel-number {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: bold;
+        }
+        .channel-info h4 {
+            font-size: 14px;
+            color: #fff;
+        }
+        .channel-info p {
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        /* Área Principal del Reproductor Ampliado (Punto 3) */
+        .player-area {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .player-container {
+            flex: 1;
+            background: #000000;
+            border-radius: 14px;
+            border: 2px solid #1f2d4a;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .player-placeholder {
+            text-align: center;
+            color: #64748b;
+        }
+        
+        /* Barra de información inferior del reproductor */
+        .player-overlay-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(11, 15, 25, 0.95));
+            padding: 25px 30px 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .current-show h2 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .current-show p {
+            font-size: 13px;
+            color: #38bdf8;
+        }
+        .player-controls {
+            display: flex;
+            gap: 15px;
+        }
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .ctrl-btn:hover {
+            background: #0284c7;
+            border-color: #0284c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ LATERAL DE CANALES -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>TV en Directo</h3>
+            <button class="btn-back" onclick="location.href='dashboard.html'">Volver</button>
+        </div>
+        
+        <div class="channel-list">
+            <div class="channel-item active" tabindex="1" onclick="cambiarCanal('La 1 HD', 'Telediario Matinal')">
+                <span class="channel-number">01</span>
+                <div class="channel-info">
+                    <h4>La 1 HD</h4>
+                    <p>En emisión: Noticias</p>
+                </div>
+            </div>
+            <div class="channel-item" tabindex="2" onclick="cambiarCanal('Antena 3 HD', 'Espejo Público')">
+                <span class="channel-number">02</span>
+                <div class="channel-info">
+                    <h4>Antena 3 HD</h4>
+                    <p>En emisión: Magacín</p>
+                </div>
+            </div>
+            <div class="channel-item" tabindex="3" onclick="cambiarCanal('Movistar Deportes', 'Directo NBA Live')">
+                <span class="channel-number">03</span>
+                <div class="channel-info">
+                    <h4>Movistar Deportes</h4>
+                    <p>En emisión: Baloncesto</p>
+                </div>
+            </div>
+            <div class="channel-item" tabindex="4" onclick="cambiarCanal('Vamos HD', 'Informe Robinson')">
+                <span class="channel-number">04</span>
+                <div class="channel-info">
+                    <h4>Vamos HD</h4>
+                    <p>En emisión: Documental</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR EN VIVO AMPLIADO (PUNTO 3) -->
+    <div class="player-area">
+        <div class="player-container" id="video-container">
+            <!-- Contenedor del reproductor de vídeo (ExoPlayer / HLS.js) -->
+            <div class="player-placeholder">
+                <div style="font-size: 48px; margin-bottom: 10px;">▶️</div>
+                <p>Reproduciendo flujo en directo</p>
+            </div>
+
+            <!-- Overlay inferior con datos del canal y EPG -->
+            <div class="player-overlay-bar">
+                <div class="current-show">
+                    <h2 id="channel-title">La 1 HD</h2>
+                    <p id="show-title">Programa actual: Telediario Matinal (08:00 - 10:00)</p>
+                </div>
+                <div class="player-controls">
+                    <button class="ctrl-btn" onclick="togglePantallaCompleta()">Pantalla Completa</button>
+                    <button class="ctrl-btn" onclick="alert('Añadido a Favoritos (Punto 8)')">❤️ Favorito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cambiarCanal(nombreCanal, programaActual) {
+            document.getElementById('channel-title').innerText = nombreCanal;
+            document.getElementById('show-title').innerText = "Programa actual: " + programaActual;
+        }
+
+        function togglePantallaCompleta() {
+            alert("Activando modo pantalla completa para Smart TV...");
+        }
+
+        // Foco inicial en el primer canal para la navegación con el mando
+        window.addEventListener('load', () => {
+            document.querySelector('.channel-item').focus();
+        });
+    </script>
+</body>
+</html>

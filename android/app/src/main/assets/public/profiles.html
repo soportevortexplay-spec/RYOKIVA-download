@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Perfiles</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1120 url("fondo.jpg") no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}
+.header-title{font-size:2rem;font-weight:800;margin-bottom:10px}
+.header-sub{color:#94a3b8;margin-bottom:30px}
+.profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px;width:100%;max-width:1000px;justify-content:center}
+.profile-card{background:rgba(30,41,59,0.75);border:2px solid transparent;border-radius:16px;padding:18px 10px;text-align:center;cursor:pointer;transition:all .25s ease;outline:none;display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.profile-card:focus,.profile-card:hover{border-color:#e11d48;background:rgba(225,29,72,0.25);transform:scale(1.08)}
+.profile-avatar{width:75px;height:75px;border-radius:50%;background:#e11d48;display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+</style>
+</head>
+<body>
+<div class="header-title">¿Quién está viendo?</div>
+<div class="header-sub">Selecciona un perfil para continuar (Hasta 10 perfiles)</div>
+
+<div class="profiles-grid">
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar">👨‍💻</div><div style="font-weight:600">Principal</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#2563eb">🎬</div><div style="font-weight:600">Cine</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#059669">⚽</div><div style="font-weight:600">Deportes</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#d97706">👶</div><div style="font-weight:600">Kids</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#7c3aed">🎮</div><div style="font-weight:600">Gaming</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#db2777">🚀</div><div style="font-weight:600">Sci-Fi</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#0891b2">🎵</div><div style="font-weight:600">Música</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#4f46e5">📚</div><div style="font-weight:600">Documental</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#65a30d">⭐</div><div style="font-weight:600">Favoritos</div></a>
+  <a href="index.html" class="profile-card" tabindex="0"><div class="profile-avatar" style="background:#475569">🔒</div><div style="font-weight:600">Adultos +18</div></a>
+</div>
+</body>
+</html>

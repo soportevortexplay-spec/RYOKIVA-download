@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOKIVA - Selección de Idioma</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px 50px;
+        }
+
+        /* Soporte RTL (Árabe) */
+        [dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Cabecera */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 26px;
+            color: #38bdf8;
+        }
+        .btn-back {
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Selector de Idiomas */
+        .lang-title {
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        .lang-card {
+            background: #131b2e;
+            border: 2px solid #1f2d4a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .lang-card:focus, .lang-card:hover, .lang-card.active {
+            outline: none;
+            border-color: #38bdf8;
+            transform: translateY(-4px);
+            background: #1b2742;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+        }
+
+        .flag-icon {
+            font-size: 28px;
+        }
+        .lang-info h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .lang-info p {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        /* Vista Previa de Traducción */
+        .preview-box {
+            margin-top: 40px;
+            background: #0f1626;
+            border: 1px solid #1f2d4a;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 900px;
+        }
+        .preview-box h3 {
+            font-size: 16px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .preview-box p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="txt-title">Idioma / Language</h1>
+        <button class="btn-back" id="txt-back" onclick="location.href='dashboard.html'">Volver / Back</button>
+    </header>
+
+    <div class="lang-title" id="txt-subtitle">Selecciona el idioma de la aplicación / Select language</div>
+
+    <!-- 8 IDIOMAS INTERNACIONALES (PUNTO 10) -->
+    <div class="lang-grid">
+        
+        <!-- 1. Español -->
+        <div class="lang-card active" tabindex="1" onclick="cambiarIdioma('es', false)">
+            <span class="flag-icon">🇪🇸</span>
+            <div class="lang-info">
+                <h4>Español</h4>
+                <p>ES - Castellano</p>
+            </div>
+        </div>
+
+        <!-- 2. English -->
+        <div class="lang-card" tabindex="2" onclick="cambiarIdioma('en', false)">
+            <span class="flag-icon">🇬🇧</span>
+            <div class="lang-info">
+                <h4>English</h4>
+                <p>EN - International</p>
+            </div>
+        </div>
+
+        <!-- 3. Français -->
+        <div class="lang-card" tabindex="3" onclick="cambiarIdioma('fr', false)">
+            <span class="flag-icon">🇫🇷</span>
+            <div class="lang-info">
+                <h4>Français</h4>
+                <p>FR - French</p>
+            </div>
+        </div>
+
+        <!-- 4. Português -->
+        <div class="lang-card" tabindex="4" onclick="cambiarIdioma('pt', false)">
+            <span class="flag-icon">🇵🇹</span>
+            <div class="lang-info">
+                <h4>Português</h4>
+                <p>PT - Portuguese</p>
+            </div>
+        </div>
+
+        <!-- 5. Deutsch -->
+        <div class="lang-card" tabindex="5" onclick="cambiarIdioma('de', false)">
+            <span class="flag-icon">🇩🇪</span>
+            <div class="lang-info">
+                <h4>Deutsch</h4>
+                <p>DE - German</p>
+            </div>
+        </div>
+
+        <!-- 6. Nederlands -->
+        <div class="lang-card" tabindex="6" onclick="cambiarIdioma('nl', false)">
+            <span class="flag-icon">🇳🇱</span>
+            <div class="lang-info">
+                <h4>Nederlands</h4>
+                <p>NL - Dutch</p>
+            </div>
+        </div>
+
+        <!-- 7. Italiano -->
+        <div class="lang-card" tabindex="7" onclick="cambiarIdioma('it', false)">
+            <span class="flag-icon">🇮🇹</span>
+            <div class="lang-info">
+                <h4>Italiano</h4>
+                <p>IT - Italian</p>
+            </div>
+        </div>
+
+        <!-- 8. العربية (Soporte RTL) -->
+        <div class="lang-card" tabindex="8" onclick="cambiarIdioma('ar', true)">
+            <span class="flag-icon">🇸🇦</span>
+            <div class="lang-info">
+                <h4>العربية</h4>
+                <p>AR - Arabic (RTL)</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- VISTA PREVIA DE TRADUCCIÓN RÁPIDA -->
+    <div class="preview-box">
+        <h3 id="prev-head">Ajustes de Idioma Guardados</h3>
+        <p id="prev-desc">Los menús, categorías y la guía EPG adaptarán automáticamente sus textos al idioma seleccionado.</p>
+    </div>
+
+    <script>
+        const traducciones = {
+            es: { title: "Idioma", back: "Volver al Menú", sub: "Selecciona el idioma de la aplicación", head: "Ajustes de Idioma Guardados", desc: "Los menús y categorías se adaptarán al idioma seleccionado." },
+            en: { title: "Language", back: "Back to Menu", sub: "Select application language", head: "Language Settings Saved", desc: "Menus and categories will automatically adapt to your chosen language." },
+            fr: { title: "Langue", back: "Retour au menu", sub: "Sélectionnez la langue de l'application", head: "Paramètres de langue enregistrés", desc: "Les menus se traduiront dans la langue sélectionnée." },
+            pt: { title: "Idioma", back: "Voltar ao Menu", sub: "Selecione o idioma do aplicativo", head: "Configurações de Idioma Salvas", desc: "Os menus do aplicativo serão adaptados ao idioma selecionado." },
+            de: { title: "Sprache", back: "Zurück zum Menü", sub: "Wählen Sie die App-Sprache aus", head: "Spracheinstellungen gespeichert", desc: "Die Menüs werden in die gewählte Sprache übersetzt." },
+            nl: { title: "Taal", back: "Terug naar Menu", sub: "Selecteer de taal van de applicatie", head: "Taalinstellingen Opgeslagen", desc: "De menu's worden aangepast aan de gekozen taal." },
+            it: { title: "Lingua", back: "Torna al Menu", sub: "Seleziona la lingua dell'applicazione", head: "Impostazioni Lingua Salvate", desc: "I menu si adatteranno alla lingua selezionata." },
+            ar: { title: "اللغة", back: "العودة إلى القائمة", sub: "اختر لغة التطبيق", head: "تم حفظ إعدادات اللغة", desc: "ستتكيف القوائم وفئات العرض تلقائيًا مع اللغة المختارة." }
+        };
+
+        function cambiarIdioma(code, isRtl) {
+            const root = document.getElementById('html-root');
+            if (isRtl) {
+                root.setAttribute('dir', 'rtl');
+            } else {
+                root.removeAttribute('dir');
+            }
+
+            const t = traducciones[code] || traducciones.es;
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-back').innerText = t.back;
+            document.getElementById('txt-subtitle').innerText = t.sub;
+            document.getElementById('prev-head').innerText = t.head;
+            document.getElementById('prev-desc').innerText = t.desc;
+
+            localStorage.setItem('ryokiva_lang', code);
+            localStorage.setItem('ryokiva_rtl', isRtl ? 'true' : 'false');
+        }
+
+        window.addEventListener('load', () => {
+            document.querySelector('.lang-card').focus();
+        });
+    </script>
+</body>
+</html>

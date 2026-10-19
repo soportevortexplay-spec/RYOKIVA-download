@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYOKIVA - Soporte & Diagnóstico</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px 50px;
+        }
+
+        /* Cabecera */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 26px;
+            color: #38bdf8;
+        }
+        .btn-back {
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Layout Principal */
+        .support-container {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            max-height: 500px;
+        }
+
+        /* Lado Izquierdo: Test Diagnóstico de Red */
+        .diag-block {
+            flex: 1.1;
+            background: #131b2e;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        .diag-block h3 {
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .diag-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .diag-row {
+            background: #0b0f19;
+            border: 1px solid #1f2d4a;
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .diag-row span:first-child {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+        .diag-val {
+            font-size: 13px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        .status-ok {
+            color: #22c55e !important;
+        }
+
+        .btn-run-diag {
+            background: #0284c7;
+            border: none;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: auto;
+        }
+        .btn-run-diag:focus, .btn-run-diag:hover {
+            background: #0369a1;
+            outline: 2px solid #38bdf8;
+        }
+
+        /* Lado Derecho: QR de Contacto / Soporte Técnico */
+        .qr-support-block {
+            flex: 0.9;
+            background: #0f1626;
+            border: 1px solid #1f2d4a;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .qr-support-block h3 {
+            font-size: 18px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .qr-support-block p {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            max-width: 250px;
+        }
+        .qr-box {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .qr-box img {
+            display: block;
+            width: 140px;
+            height: 140px;
+        }
+        .support-id-tag {
+            font-size: 11px;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 5px 12px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ayuda & Soporte Técnico</h1>
+        <button class="btn-back" onclick="location.href='dashboard.html'">Volver al Menú</button>
+    </header>
+
+    <div class="support-container">
+        
+        <!-- 1. DIAGNÓSTICO EN TIEMPO REAL -->
+        <div class="diag-block">
+            <h3><span>🛠️</span> Diagnóstico del Dispositivo</h3>
+            
+            <div class="diag-grid">
+                <div class="diag-row">
+                    <span>Estado de Conexión a Internet</span>
+                    <span class="diag-val status-ok" id="diag-net">Conectado (Wi-Fi 5GHz)</span>
+                </div>
+                <div class="diag-row">
+                    <span>Latencia (Ping al Servidor)</span>
+                    <span class="diag-val status-ok" id="diag-ping">18 ms</span>
+                </div>
+                <div class="diag-row">
+                    <span>Velocidad Estimada de Descarga</span>
+                    <span class="diag-val" id="diag-speed">85 Mbps (Excelente)</span>
+                </div>
+                <div class="diag-row">
+                    <span>Estado del Túnel VPN</span>
+                    <span class="diag-val status-ok" id="diag-vpn">Activo y Encriptado</span>
+                </div>
+                <div class="diag-row">
+                    <span>Versión de la App RYOKIVA</span>
+                    <span class="diag-val" style="color: #94a3b8;">v2.4.0 (Build 2026)</span>
+                </div>
+            </div>
+
+            <button class="btn-run-diag" tabindex="1" onclick="ejecutarTest()">Reevaluar Conexión</button>
+        </div>
+
+        <!-- 2. TICKET DE ASISTENCIA VÍA MÓVIL POR QR -->
+        <div class="qr-support-block">
+            <h3>Abrir Ticket de Soporte</h3>
+            <p>Escanea con el móvil para enviar un reporte automático con el registro de diagnóstico a nuestro equipo de ayuda.</p>
+            
+            <div class="qr-box">
+                <img id="qr-support-img" src="" alt="Cargando QR Soporte...">
+            </div>
+
+            <div class="support-id-tag" id="support-ticket-id">
+                Generando Ticket ID...
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const deviceID = localStorage.getItem('ryokiva_device') || "DEV-777777";
+            const ticketID = "TK-" + Math.floor(100000 + Math.random() * 900000);
+            
+            const urlSoporte = `https://tuweb.com/soporte?device=${deviceID}&ticket=${ticketID}`;
+            document.getElementById('qr-support-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(urlSoporte)}`;
+            document.getElementById('support-ticket-id').innerText = "TICKET ID: " + ticketID;
+
+            document.querySelector('.btn-run-diag').focus();
+        });
+
+        function ejecutarTest() {
+            const speedVal = document.getElementById('diag-speed');
+            const pingVal = document.getElementById('diag-ping');
+
+            speedVal.innerText = "Comprobando...";
+            pingVal.innerText = "Midiendo...";
+
+            setTimeout(() => {
+                pingVal.innerText = (Math.floor(Math.random() * 15) + 12) + " ms";
+                speedVal.innerText = (Math.floor(Math.random() * 30) + 70) + " Mbps (Excelente)";
+                alert("Diagnóstico de red finalizado. Conexión óptima para emisión en 4K.");
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

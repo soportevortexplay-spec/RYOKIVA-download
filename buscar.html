@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOKIVA - Búsqueda Universal</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0b0f19; color: #fff; font-family: sans-serif; padding: 25px; }
+.header { display: flex; gap: 15px; margin-bottom: 25px; align-items: center; }
+input { flex: 1; background: #1e293b; border: 2px solid #334155; color: #fff; padding: 14px; border-radius: 10px; font-size: 16px; }
+input:focus { border-color: #38bdf8; outline: none; background: #0f172a; }
+.btn { background: #334155; border: none; color: #fff; padding: 14px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+.btn:focus { background: #0284c7; outline: 2px solid #38bdf8; }
+.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+.card { background: #1e293b; border-radius: 10px; padding: 15px; text-align: center; border: 2px solid transparent; cursor: pointer; }
+.card:focus, .card:hover { border-color: #38bdf8; background: #0284c7; outline: none; }
+</style>
+<script src="api.js"></script>
+</head><body>
+<div class="header">
+<input type="text" id="sInput" placeholder="🔍 Buscar canales, películas, series..." tabindex="1">
+<button class="btn" tabindex="2" onclick="location.href=\x27dashboard.html\x27">⬅ Volver</button>
+</div>
+<div class="results" id="rBox"></div>
+<script>
+const dummy = [
+  { type: "TV", title: "La 1 HD", icon: "📺" },
+  { type: "Película", title: "Avatar 2", icon: "🎬" },
+  { type: "Serie", title: "Stranger Things", icon: "🍿" },
+  { type: "Deporte", title: "LaLiga TV", icon: "⚽" }
+];
+function filter(q) {
+  const res = dummy.filter(i => i.title.toLowerCase().includes(q.toLowerCase()));
+  document.getElementById("rBox").innerHTML = res.map((item, i) => `
+    <div class="card" tabindex="${i+3}" onclick="location.href=\x27reproductor.html\x27">
+      <div style="font-size:30px;margin-bottom:8px;">${item.icon}</div>
+      <div style="font-weight:bold;font-size:14px;">${item.title}</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">${item.type}</div>
+    </div>`
+  ).join("");
+}
+document.getElementById("sInput").addEventListener("input", (e) => filter(e.target.value));
+window.onload = () => { filter(""); document.getElementById("sInput").focus(); };
+</script></body></html>

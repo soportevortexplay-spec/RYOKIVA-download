@@ -1,0 +1,6 @@
+{
+	"appId": "app.ryokiva.streaming",
+	"appName": "RYOKIVA",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
